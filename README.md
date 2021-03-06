@@ -1,2 +1,2 @@
-# handbook
-The technical handbook of OverCoded
+# The Technical Handbook of OverCoded
+
