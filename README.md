@@ -17,6 +17,9 @@ Build the static site:
 ./build.sh
 ```
 
+### Structure of a post
+Here is a sample: [put a link here]()
+
 
 ## For guest
 You can leave your comment under each post if you like or you can send email to [this address](overcodedzz@gmail.com).
