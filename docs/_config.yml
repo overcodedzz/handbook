@@ -48,7 +48,7 @@ plugins:
 
 author:
   name   : "OverCoded"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/bio-photo.png"
   bio    : "HUST Senior students. Developers. Hackers."
   links:
     - label: "GitHub"
