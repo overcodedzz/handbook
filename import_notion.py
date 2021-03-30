@@ -49,7 +49,7 @@ if __name__ == '__main__':
     for f in os.listdir(NOTION_DIR):
         path = os.path.join(NOTION_DIR, f)
         if os.path.isdir(path):
-            export_image_dir = path
+            exported_image_dir = path
             print(f"[Image directory]: {f}")
         if os.path.isfile(path) and f.lower().endswith(('.md', '.markdown')):
             markdown_path = path
@@ -100,7 +100,8 @@ if __name__ == '__main__':
     # copy images to image_dir
     if exported_image_dir:
         for f in os.listdir(exported_image_dir):
-            shutil.copy(os.path.join(export_image_dir, f), image_dir)
+            image_file_path = os.path.join(exported_image_dir, f)
+            shutil.copy(image_file_path, image_dir)
 
 
 
@@ -140,16 +141,19 @@ if __name__ == '__main__':
 
     with open(note_path, 'r+') as f:
         text = f.read()
+        text = text.replace(os.path.basename(exported_image_dir).replace(" ", "%20"), f"/handbook/assets/images/{slug}")
         f.seek(0)
         f.write(header + text)
         f.truncate()
 
     print(f"\n[Output note]: {filename}")
 
+    # Clean up
     Path(markdown_path).unlink(missing_ok=True)
     Path(zip_file_path).unlink(missing_ok=True)
 
-    if exported_image_dir:
-        Path(exported_image_dir).rmdir()
+    if exported_image_dir is not None:
+        print("Exported image dir: ", exported_image_dir)
+        shutil.rmtree(exported_image_dir)
 
     print("\nDone !")
