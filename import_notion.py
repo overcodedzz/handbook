@@ -107,7 +107,7 @@ if __name__ == '__main__':
 
     # get markdown filename
     today = datetime.now()
-    filename = f'{today.year}-{today.month:02}-{today.day}-{slug}.md'
+    filename = f'{today.year}-{today.month:02}-{today.day:02}-{slug}.md'
     
     note_path = os.path.join(POST_DIR, filename)
     shutil.copy(markdown_path, note_path)
@@ -118,12 +118,12 @@ if __name__ == '__main__':
     header += f'title: "{title}"\n'
 
     # get category
-    category = input("Enter category (default: Technology): ")
+    category = input("Enter category (default: Computer science): ")
 
     if not category:
-        category = 'Technology'
+        category = 'Computer science'
     
-    header += f'categories: {category}\n'
+    header += f'categories:\n  - {category}\n'
 
     # get tags
     tags = input("Enter tags (comma-separate): ").strip()
@@ -141,7 +141,8 @@ if __name__ == '__main__':
 
     with open(note_path, 'r+') as f:
         text = f.read()
-        text = text.replace(os.path.basename(exported_image_dir).replace(" ", "%20"), f"/handbook/assets/images/{slug}")
+        if exported_image_dir:
+            text = text.replace(os.path.basename(exported_image_dir).replace(" ", "%20"), f"/handbook/assets/images/{slug}")
         f.seek(0)
         f.write(header + text)
         f.truncate()
