@@ -99,4 +99,4 @@ github: [metadata]
 comments:
   provider: "disqus"
   disqus:
-    shortname: "overcoded-github-io"
+    shortname: "overcoded-handbook"
