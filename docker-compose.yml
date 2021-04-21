@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  web:
+    image: jekyll/jekyll
+    command: jekyll serve --incremental
+    environment:
+      - JEKYLL_VERSION=3.9
+    volumes:
+      - ./docs/:/srv/jekyll
+    ports:
+      - 4000:4000
+

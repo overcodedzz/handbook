@@ -1,14 +1,12 @@
 '''
-Run this script to import Notion note to handbook note
+Run this script to import Notion note to handbook post
 
 Author: minhdq99hp@gmail.com
-
-
-Todo:
-- Unzip file
-- Read Markdown file
-- Copy images file to folder assets
 '''
+# TODO: remove the title (start with '^# ')
+# TODO: read the tag if exists
+# TODO: remove the tag line and modifed time line.
+
 import os
 import re
 import logging
