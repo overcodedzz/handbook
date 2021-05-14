@@ -8,7 +8,7 @@ Kubernetes is a open source platform developed by Google engineers firstly intro
 
 # Kubernetes Architecture
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-03_15-37-03.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-03_15-37-03.png)
+![kube_image/Screenshot_from_2021-03-03_15-37-03.png](kube_image/Screenshot_from_2021-03-03_15-37-03.png)
 
 When working with kubernetes you will encounter with these below basic components:
 
@@ -37,11 +37,11 @@ When working with kubernetes, there are some core concepts or keywords that deve
 
 The first concept  is the concept of pods. Pods basically is the place to store and run the containers. Each pod created and run on only one nodes of the cluster, and normally each pods should contains a single containers which in charge of one processes of the application. It will remains the isolated feature of our microservices application and function more efficient. 
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-03_23-41-16.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-03_23-41-16.png)
+![kube_image/Screenshot_from_2021-03-03_23-41-16.png](kube_image/Screenshot_from_2021-03-03_23-41-16.png)
 
 The image above demonstrated an ideal components of a pod. The containers inside the pod should be organized in such way that they support each other and is expected to full-fill one specific processes.
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-03_23-44-08.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-03_23-44-08.png)
+![kube_image/Screenshot_from_2021-03-03_23-44-08.png](kube_image/Screenshot_from_2021-03-03_23-44-08.png)
 
 This image above demonstrated when developers should group the containers in one pod and when developers should separated them so that it will optimized their function.
 
@@ -59,7 +59,7 @@ For containers inside a pod, they will run under the same Network and Unix Time 
 
 All pods in Kubernetes cluster reside in a single flat, shared network-address space, which allows every pods to connect to one another through the IP address of the destination pod, no Network Address Translation gateway existed between pods. So when 2 pods sends network packages to one another, they'll each see the actual IP address of the other pods as the source IP address in the packages.
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-26_16-22-21.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-26_16-22-21.png)
+![kube_image/Screenshot_from_2021-03-26_16-22-21.png](kube_image/Screenshot_from_2021-03-26_16-22-21.png)
 
 This architecture makes communication between multiple pods always simple. It's unnecessary to know if 2 pods are scheduled onto a single or onto different worker nodes.  In both case the containers inside those 2 pods can always communicate through this flat NAT-less network, this much like the computers on Local Area Network. 
 
@@ -168,7 +168,7 @@ Label is a mechanism in Kubernetes referred to the act of choosing the specific 
 
 A label is an arbitrary key-value pair that developers attach to the components inside the clusters. This key-value pair later on is used for selecting components through label-selector mechanism. A resource can have multiple label, provided that the keys of those labels are unique inside that resource.  
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-26_16-41-51.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-26_16-41-51.png)
+![kube_image/Screenshot_from_2021-03-26_16-41-51.png](kube_image/Screenshot_from_2021-03-26_16-41-51.png)
 
 → **Label operation on pods** 
 
@@ -364,15 +364,15 @@ kubectl describe po {po_name}
 
 An mechanism that ensures the continuous running of a pod, no matters what accidentally happens to that pod or even the node that pod is currently scheduled. 
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-03_21-15-58.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-03_21-15-58.png)
+![kube_image/Screenshot_from_2021-04-03_21-15-58.png](kube_image/Screenshot_from_2021-04-03_21-15-58.png)
 
 Also ReplicationController will maintain the desired amount of a pod running inside the cluster → if too few it will add more. If too much it will delete. Such operation is perform as follow::
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-03_21-28-09.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-03_21-28-09.png)
+![kube_image/Screenshot_from_2021-04-03_21-28-09.png](kube_image/Screenshot_from_2021-04-03_21-28-09.png)
 
 → ReplicationController components:
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-03_21-29-31.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-03_21-29-31.png)
+![kube_image/Screenshot_from_2021-04-03_21-29-31.png](kube_image/Screenshot_from_2021-04-03_21-29-31.png)
 
 - *label selector*: determines which pods are in replication controller scope
 - *replicas*: desired amount of pod replicas inside the cluster
@@ -429,7 +429,7 @@ To remove a pods from replication controller: remove or change their label selec
 
 Changing replication controller label selector will affect all the pods inside the controller, in this case it will removed all the pods currently inside the controller scope and create new pods that satisfy the label selector. However, developers rarely change the label selector of controller, but the pod templates.
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-03_22-30-49.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-03_22-30-49.png)
+![kube_image/Screenshot_from_2021-04-03_22-30-49.png](kube_image/Screenshot_from_2021-04-03_22-30-49.png)
 
 By changing the pod templates, it'll only affects the newly created pods afterwards, the old pods with old templates will not be affected. 
 
@@ -491,7 +491,7 @@ From above developers can see the *matchExpression* field is a replacement for *
 
 → **Usage**: To ensure a pod running on every nodes or only certain nodes inside the cluster, e.g: infrastructure-related pods perform system-level process, kube-proxy process.
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-04_19-44-02.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-04_19-44-02.png)
+![kube_image/Screenshot_from_2021-04-04_19-44-02.png](kube_image/Screenshot_from_2021-04-04_19-44-02.png)
 
 → **Creating YAML file** : 
 
@@ -542,7 +542,7 @@ spec:
 
 - Jobs: support one-time-only running pods, when the container finished running it'll not restart.
 
-    ![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-05_10-12-11.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-05_10-12-11.png)
+    ![kube_image/Screenshot_from_2021-04-05_10-12-11.png](kube_image/Screenshot_from_2021-04-05_10-12-11.png)
 
     Pods management by Job
 
@@ -603,13 +603,13 @@ spec:
 
 → **Usage:** make an entrypoint to the group of pods provide the same service. Client connect to service through IP address and port, service will handle the pod connection part. → transparency and flexibility.
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-03_23-39-47.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-03-03_23-39-47.png)
+![kube_image/Screenshot_from_2021-03-03_23-39-47.png](kube_image/Screenshot_from_2021-03-03_23-39-47.png)
 
 → **Creating** **a service**:
 
 Service manage pods through labels and label selector like other previous management mechanisms. 
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-07_22-45-29.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-07_22-45-29.png)
+![kube_image/Screenshot_from_2021-04-07_22-45-29.png](kube_image/Screenshot_from_2021-04-07_22-45-29.png)
 
 Service is created through `yaml` file and `kubectl` create commands:
 
@@ -736,7 +736,7 @@ Two ways:
 
     By manually create the endpoints for a non-selector service, developers may direct the request to the service to external machine defined by the pair IP and port:
 
-    ![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_08-39-26.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_08-39-26.png)
+    ![kube_image/Screenshot_from_2021-04-08_08-39-26.png](kube_image/Screenshot_from_2021-04-08_08-39-26.png)
 
     pods utilizing a service with two external endpoints
 
@@ -758,7 +758,7 @@ Two ways:
 
 ### Exposing service to external client
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_08-46-55.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_08-46-55.png)
+![kube_image/Screenshot_from_2021-04-08_08-46-55.png](kube_image/Screenshot_from_2021-04-08_08-46-55.png)
 
 3 ways for exposing service to clients: 
 
@@ -786,7 +786,7 @@ spec:
     app: kubia
 ```
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_09-01-15.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_09-01-15.png)
+![kube_image/Screenshot_from_2021-04-08_09-01-15.png](kube_image/Screenshot_from_2021-04-08_09-01-15.png)
 
 Sometimes to utilize the node port service, developers may configure the firewall setting on the host that the nodes runs on, like GCP or AWS.
 
@@ -812,7 +812,7 @@ app: kubia
 
 When we get the service name `kubia-loadbalancer` we will see the external IP that the cloud providers provide to this service, and external client can connect to that service through this IP.
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_09-14-20.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_09-14-20.png)
+![kube_image/Screenshot_from_2021-04-08_09-14-20.png](kube_image/Screenshot_from_2021-04-08_09-14-20.png)
 
 **Note for this 2 type of service**
 
@@ -823,7 +823,7 @@ When we get the service name `kubia-loadbalancer` we will see the external IP th
 
 An application layer resources that stores the defined path to the service below, external client will connect to each service through this path. 
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_09-25-03.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_09-25-03.png)
+![kube_image/Screenshot_from_2021-04-08_09-25-03.png](kube_image/Screenshot_from_2021-04-08_09-25-03.png)
 
 Note: Check whether the Kubernetes environments support Ingress controller before using Ingress. E.g *minikube* does not enable Ingress by default and required manual configuration.
 
@@ -851,7 +851,7 @@ spec:
 
 Ingress mechanism might be illustrated as follows:
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_09-33-06.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_09-33-06.png)
+![kube_image/Screenshot_from_2021-04-08_09-33-06.png](kube_image/Screenshot_from_2021-04-08_09-33-06.png)
 
 **Handle TLS traffic**
 
@@ -880,13 +880,13 @@ $ kubectl create secret tls-create --cert=tls.cert --key=tls.key
 - HTTP GET probe
 - TCP socket probe
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_10-04-42.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_10-04-42.png)
+![kube_image/Screenshot_from_2021-04-08_10-04-42.png](kube_image/Screenshot_from_2021-04-08_10-04-42.png)
 
 ## Volumes
 
 Volume is basically like the storage of any data that have been crud inside the pod by any container that ever existed or run in that pod. The volume is created and share its life cycle with the pod. which means it will be created when the pod is started and killed and the pod is deleted. By this mechanism the data inside the volume will be persisted across the container inside that pod. After a container is restarted, the new container can see all the files that were written to the volume by the previous container.
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_10-12-58.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_10-12-58.png)
+![kube_image/Screenshot_from_2021-04-08_10-12-58.png](kube_image/Screenshot_from_2021-04-08_10-12-58.png)
 
 Types of volumes:
 
@@ -902,13 +902,13 @@ Types of volumes:
 
 A high level resource that support deploying applications and updating applications declaratively. 
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_10-32-08.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_10-32-08.png)
+![kube_image/Screenshot_from_2021-04-08_10-32-08.png](kube_image/Screenshot_from_2021-04-08_10-32-08.png)
 
 ## StatefulSets
 
 A workload API object that manages stateful application.
 
-![Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_10-39-34.png](Containerization%20technology%20Pt2%20Kubernetes%202fa88b6342cf4f76ab3cadf2c41ece1f/Screenshot_from_2021-04-08_10-39-34.png)
+![kube_image/Screenshot_from_2021-04-08_10-39-34.png](kube_image/Screenshot_from_2021-04-08_10-39-34.png)
 
 ## API group and API version
 
