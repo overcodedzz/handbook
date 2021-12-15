@@ -1,10 +1,11 @@
 # Containerization technology Pt2: Kubernetes
 
-# What is kubernetes?
+# What is Kubernetes?
+Container orchestration: a software that manage the container clusters.
+- Provide fail-safety, load balancing, high availability
+- E.g: Kubernetes, Docker Swarm
 
-Docker or containerization have brought up a fascinating solution for deploy and managing software using microservice architect. But when the solution became more and more global there go a problem. If the software contains a huge number of services required the same number of containers, how do developers or administrators monitor it effectively, from hardware consuming to response speed, load balancing and more. This is container orchestration platform like kubernetes demonstrates themselves. 
-
-Kubernetes is a open source platform developed by Google engineers firstly introduced in 2014. It provides a solution for developers to manage, scale and deploy their containerized product more efficiently and simply.
+Another alternative is a PaaS. A PaaS has a higher degree of abstraction than Docker schedulers because only the application needs to be provided. The PaaS creates the Docker images. Therefore, a PaaS can be the simpler and therefore better solution.
 
 # Kubernetes Architecture
 
@@ -914,6 +915,6 @@ A workload API object that manages stateful application.
 
 link: [https://kubernetes.io/docs/reference/using-api/](https://kubernetes.io/docs/reference/using-api/)
 
-# Reference
 
-Kubernetes in Action 1st edition, Marko Luska - 2018
+## Reference
+- Kubernetes in Action 1st edition, Marko Luska - 2018
